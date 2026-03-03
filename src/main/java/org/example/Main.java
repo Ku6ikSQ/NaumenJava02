@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 //        runTask1();
-        runTask2();
+//        runTask2();
+        runTask3();
     }
 
     private static void runTask1() {
@@ -42,5 +43,10 @@ public class Main {
             System.out.println("[Task2]: После сортировки:");
             task.print();
         }
+    }
+
+    private static void runTask3() {
+        var task = new Task3();
+        System.out.format("[Task3]: Средняя ЗП по отделу: %.2f", task.getAverageSalaryByDepartment("Бухгалтерия"));
     }
 }
