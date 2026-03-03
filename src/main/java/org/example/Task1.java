@@ -19,19 +19,4 @@ public final class Task1 {
                 min = num;
         return min;
     }
-
-    public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.print("Введите размер массива: ");
-            if (!scanner.hasNextInt()) {
-                System.out.println("Ошибка: ожидалось целое число.");
-                return;
-            }
-
-            var n = scanner.nextInt();
-            var task = new Task1(n);
-            var result = task.findAbsMin();
-            System.out.println("Минимальное по модулю число: " + result);
-        }
-    }
 }
