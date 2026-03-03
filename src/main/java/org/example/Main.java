@@ -7,7 +7,8 @@ public class Main {
 //        runTask1();
 //        runTask2();
 //        runTask3();
-        runTask4();
+//        runTask4();
+        runTask5();
     }
 
     private static void runTask1() {
@@ -55,5 +56,23 @@ public class Main {
         System.out.println("[Task4]: Выполняется запрос к https://httpbin.org/user-agent ...");
         var task = new Task4();
         task.run();
+    }
+
+    private static void runTask5() {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("[Task5]: Введите URL файла для скачивания: ");
+            var url = scanner.nextLine();
+
+            System.out.print("[Task5]: Введите имя файла для сохранения: ");
+            var outputFile = scanner.nextLine();
+
+            var task = new Task5(url, outputFile);
+            task.start();
+
+            System.out.println("[Task5]: Нажмите Enter, чтобы остановить скачивание...");
+            scanner.nextLine();
+
+            task.stop();
+        }
     }
 }
