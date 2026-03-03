@@ -6,7 +6,8 @@ public class Main {
     public static void main(String[] args) {
 //        runTask1();
 //        runTask2();
-        runTask3();
+//        runTask3();
+        runTask4();
     }
 
     private static void runTask1() {
@@ -48,5 +49,11 @@ public class Main {
     private static void runTask3() {
         var task = new Task3();
         System.out.format("[Task3]: Средняя ЗП по отделу: %.2f", task.getAverageSalaryByDepartment("Бухгалтерия"));
+    }
+
+    private static void runTask4() {
+        System.out.println("[Task4]: Выполняется запрос к https://httpbin.org/user-agent ...");
+        var task = new Task4();
+        task.run();
     }
 }
