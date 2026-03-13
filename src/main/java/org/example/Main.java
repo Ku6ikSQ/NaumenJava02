@@ -1,17 +1,78 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+import java.util.Scanner;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
+public class Main {
+    public static void main(String[] args) {
+//        runTask1();
+//        runTask2();
+//        runTask3();
+//        runTask4();
+        runTask5();
+    }
+
+    private static void runTask1() {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("[Task1]: Введите размер массива: ");
+            if (!scanner.hasNextInt()) {
+                System.out.println("[Task1]: Ошибка: ожидалось целое число.");
+                return;
+            }
+
+            int n = scanner.nextInt();
+            var task = new Task1(n);
+            var result = task.findAbsMin();
+            System.out.println("[Task1]: Минимальное по модулю число: " + result);
+        }
+    }
+
+    private static void runTask2() {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("[Task2]: Введите размер списка: ");
+            if (!scanner.hasNextInt()) {
+                System.out.println("[Task2]: Ошибка: ожидалось целое число.");
+                return;
+            }
+
+            int n = scanner.nextInt();
+            var task = new Task2(n);
+
+            System.out.println("[Task2]: До сортировки:");
+            task.print();
+
+            task.sort();
+
+            System.out.println("[Task2]: После сортировки:");
+            task.print();
+        }
+    }
+
+    private static void runTask3() {
+        var task = new Task3();
+        System.out.format("[Task3]: Средняя ЗП по отделу: %.2f", task.getAverageSalaryByDepartment("Бухгалтерия"));
+    }
+
+    private static void runTask4() {
+        System.out.println("[Task4]: Выполняется запрос к https://httpbin.org/user-agent ...");
+        var task = new Task4();
+        task.run();
+    }
+
+    private static void runTask5() {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("[Task5]: Введите URL файла для скачивания: ");
+            var url = scanner.nextLine();
+
+            System.out.print("[Task5]: Введите имя файла для сохранения: ");
+            var outputFile = scanner.nextLine();
+
+            var task = new Task5(url, outputFile);
+            task.start();
+
+            System.out.println("[Task5]: Нажмите Enter, чтобы остановить скачивание...");
+            scanner.nextLine();
+
+            task.stop();
         }
     }
 }
